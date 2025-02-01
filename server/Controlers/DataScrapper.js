@@ -10,7 +10,7 @@ const {scrapper} = require("../utils/scrapperFunction")
 exports.scrapAmazonProduct  = async(req, res) =>{
    try{
     const {url} = req.body;
-    console.log("url is ",url)
+    //console.log("url is ",url)
     if(!url) {
        return res.status(401).json({
             success : false,
@@ -18,6 +18,20 @@ exports.scrapAmazonProduct  = async(req, res) =>{
          
         })
     };
+
+    const product = await ProductDetails.findOne({url})
+    if(product){
+        product.searchCount+=1;
+            
+            await product.save();
+            return res.status(200).json({
+                success:true,
+                message: "we already have this product ",
+                product,
+            });
+
+         }
+
     // call the function
     const data = await scrapper(url);
     if(!data.success){
@@ -46,27 +60,28 @@ exports.scrapAmazonProduct  = async(req, res) =>{
         //  //console.log("title is " , title )
 
          // now checking if the product already exist in the db if yes update the price and other things if no then make the new entry of the product in the database
-         const product = await ProductDetails.findOne({url})
-         if(product){
+        //  const product = await ProductDetails.findOne({url})
+        //  if(product){
             // if product exist then update the all the price 
             
-            product.currentPrice = currentPrice;
-            product.trackPrice = [...product.trackPrice , currentPrice];
-            product.originalPrice = originalPrice;
-            product.outOfStock = outOfStock;
-            product.discount = discount;
-            product.maxPrice = calcMax(product.trackPrice);
-            product.lowestPrice = calcLow(product.trackPrice);
-            product.avgPrice = calcAvg(product.trackPrice);
+            // product.currentPrice = currentPrice;
+            // product.trackPrice = [...product.trackPrice , currentPrice];
+            // product.originalPrice = originalPrice;
+            // product.outOfStock = outOfStock;
+            // product.discount = discount;
+            // product.maxPrice = calcMax(product.trackPrice);
+            // product.lowestPrice = calcLow(product.trackPrice);
+            // product.avgPrice = calcAvg(product.trackPrice);
+        //     product.searchCount+=1;
             
-            await product.save();
-            return res.status(200).json({
-                success: true,
-                message: "Product updated successfully",
-                product,
-            });
+        //     await product.save();
+        //     return res.status(200).json({
+        //         success:true,
+        //         message: "we already have this product ",
+        //         product,
+        //     });
 
-         }
+        //  }
          const details = await ProductDetails.create({
             url,
             title,
@@ -78,7 +93,8 @@ exports.scrapAmazonProduct  = async(req, res) =>{
             lowestPrice: currentPrice || originalPrice,
             avgPrice : currentPrice,
             imgeUrl,
-            trackPrice:[currentPrice]
+            trackPrice:[currentPrice],
+            searchCount:1
 
          });
          console.log("details are" , details)

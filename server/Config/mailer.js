@@ -28,7 +28,7 @@ exports. mailSender = async(email , product) =>{
         </div>
       `
     });
-    console.log(info);
+    console.log("printing the mail info" ,info);
     return info
 
 

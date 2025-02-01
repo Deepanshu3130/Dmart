@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { search } = require("../Routes/ScrapeRoute");
 
 const details = new mongoose.Schema(
     {
@@ -47,7 +48,10 @@ const details = new mongoose.Schema(
         },
         email : [{
             type : String,
-        }]
+        }],
+        searchCount :{
+            type:Number,
+        }
 
     }
 
