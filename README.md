@@ -41,14 +41,25 @@ DMart is a full-stack **MERN application** that allows users to:
 
 ---
 
-## 📁 Folder Structure
 
-```bash
-DMART/
-├── front-end/        # React app (client side)
-│   └── package.json
-├── server/           # Express server (backend)
-│   ├── index.js
-│   ├── Routes/
-│   ├── Model/
-│   └── package.json
+
+
+🧪 How It Works
+User pastes a product URL.
+
+Backend scrapes product details using cheerio.
+
+Product info is saved in MongoDB and displayed on UI.
+
+If the user opts for price alerts, their email is stored.
+
+A scheduled cron job runs every few hours to:
+
+Check the latest price
+
+Send an email alert if the price drops.
+
+wibesite will be live soonn.....
+
+
+
