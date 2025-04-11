@@ -24,7 +24,7 @@ const Product = () => {
         productData()
     },[])
   return (
-    <div className=" bg-black p-8 min-h-screen flex flex-col items-center">
+    <div className=" bg-black p-8 min-h-screen flex flex-col items-center pt-20">
     <div className="flex xl:flex-row flex-col gap-12 max-w-8xl w-full bg-dark p-8 rounded-lg shadow-lg">
       {/* Product Image */}
       <div className="product-image flex justify-center items-center p-6 bg-gray- rounded-lg group ">
