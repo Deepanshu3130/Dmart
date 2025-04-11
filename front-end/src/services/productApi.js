@@ -2,7 +2,7 @@ import { apiConnector } from "./apiConnector";
 import { setProduct } from "../slices/productSlice";
 import {toast} from "react-hot-toast";
 
-const BASE_URL = process.env.REACT_APP_URL;
+const BASE_URL =process.env === "development"? process.env.REACT_APP_URL: "/api/v1";
 console.log(BASE_URL)
 
 const GET_ALL_PRODUCTS = BASE_URL + "/scrapeData/getAllProduct"
