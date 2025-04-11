@@ -14,7 +14,5 @@ exports.connect = () =>{
         console.error(error.message);
         process.exit(1)
    })
-    
-
-   
+     
 }

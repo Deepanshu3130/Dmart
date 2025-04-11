@@ -6,6 +6,7 @@ import Product from './pages/Product';
 import Landing from './pages/Landing';
 import ALLproducts from './Components/ALLproducts';
 import Footer from './Components/Footer';
+import About from './pages/About';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/search' element = {<Home/>}></Route> 
        <Route path='/product/:id' element ={<Product/>}></Route>
        <Route path='/allCollection' element={<ALLproducts></ALLproducts>}></Route>
+       <Route path='/about' element={<About></About>}></Route>
     </Routes>
 
     <Footer></Footer>

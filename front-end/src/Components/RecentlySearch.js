@@ -23,7 +23,7 @@ function RecentlySearch() {
 
   return (
     
-     <div className='bg-dark  pt-8 pb-8'>
+     <div className='bg-dark  pt-8 pb-8 sm:w-full'>
       <h1 className='text-white text-4xl mx-auto text-center py-10 font-extrabold'>RECENTLY SEARCHED <span className='text-white opacity-45'>PRODUCT</span> ────</h1>
        <div className='flex m-20 gap-8  flex-wrap justify-center'>
        {Array.isArray(response) && response.length > 0 ? (

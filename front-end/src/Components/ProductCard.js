@@ -1,42 +1,44 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
-  const maxTitleLength = 30;
+  const maxTitleLength = 20; // Reduced for compactness
   const shortenedTitle = product.title.length > maxTitleLength
     ? product.title.substring(0, maxTitleLength) + "..."
     : product.title;
+
   return (
-    
-    
-      <div className='sm:w-[292px] sm:max-w-[292px] w-full flex-1 flex flex-col gap-4 rounded-md border-2 border-primary hover:border-gray-300 p-3  relative group hover:scale-110 duration-300'>
-        <div className="flex-1 relative flex flex-col gap-5 p-4 rounded-md">
+    <div className='bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group w-full max-w-[240px] mx-auto'>
+      {/* Product Image */}
+      <div className='relative overflow-hidden h-48'>
         <img
-          
           src={product.imgeUrl}
           alt={product.title}
-          width={200}
-          height={200}
-          className="max-h-[200px] object-contain w-full h-full group-hover:scale-110 duration-700"
+          className='w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-2'
         />
-      </div>
-
-      <div className="flex flex-col gap-3">
-        <h3 className="text-secondary text-xl leading-6  truncate text-primary font-bold">{shortenedTitle}</h3>
-
-        <div className="flex justify-between">
-          <p className="text-white font-bold text-lg capitalize">
-            {"category"}
-          </p>
-
-          <p className="text-white text-lg font-semibold">
-             
-          ₹<span>{product.currentPrice}</span>
-          </p>
+        {/* Price Tag */}
+        <div className='absolute bottom-2 right-2 bg-primary/90 text-black font-bold px-2 py-1 rounded-md text-xs'>
+          ₹{product.currentPrice}
         </div>
       </div>
+
+      {/* Product Info */}
+      <div className='p-3'>
+        <h3 className='text-white font-medium text-sm mb-1 line-clamp-2 h-10'>
+          {product.title}
+        </h3>
+        
+        <div className='flex justify-between items-center mt-2'>
+          <span className='text-gray-400 text-xs capitalize'>
+            {product.category || 'Uncategorized'}
+          </span>
+          
+          {/* View Button */}
+          <button className='text-primary hover:text-primary/80 text-xs font-medium transition-colors'>
+            View →
+          </button>
+        </div>
       </div>
-    
+    </div>
   );
 };
 

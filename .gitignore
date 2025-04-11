@@ -2,3 +2,4 @@
 
 frontend/.env
 server/.env
+node_modules/

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { search } = require("../Routes/ScrapeRoute");
+
 
 const details = new mongoose.Schema(
     {
