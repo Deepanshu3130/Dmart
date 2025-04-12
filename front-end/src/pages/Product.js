@@ -8,21 +8,23 @@ import arrowUp from "../assets/icons/arrow-up.svg"
 import arrowDown from "../assets/icons/arrow-down.svg"
 
 
+
 const Product = () => {
     const params = useParams();
     const [Modalopen , SetmodalOpen] = useState(false);
     console.log(params.id)
     const [result , setResult] = useState({})
-    const productData = async() =>{
+
+    useEffect(()=>{
+      const productData = async() =>{
         const response = await getProductDetails(params.id);
          console.log("response is ",response);
          setResult(response);
          console.log("result is",result)
 
     }
-    useEffect(()=>{
-        productData()
-    },[])
+      productData()
+    },[getProductDetails])
   return (
     <div className=" bg-black p-8 min-h-screen flex flex-col items-center pt-20">
     <div className="flex xl:flex-row flex-col gap-12 max-w-8xl w-full bg-dark p-8 rounded-lg shadow-lg">
