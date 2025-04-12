@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import shopingCart from '../assets/icons/animation5.mp4';
 import demo from '../assets/imges/demo.mp4';
 import MostTracked from '../Components/MostTracked';
+import AOS from 'aos';
 
 function Landing() {
     useEffect(() => {
-        Aos.init({ duration: 1000 });
+      AOS.init({ duration: 1000 });
     }, []);
 
     return (
