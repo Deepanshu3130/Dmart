@@ -179,7 +179,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build":"npm install --prefix server && npm install --prefix frontend && npm run build --prefix frontend", 
+    "build":"npm install --prefix server && npm install --prefix front-end && npm run build --prefix front-end", 
     "start" : "npm run start --prefix server" 
   },
   "keywords": [],
