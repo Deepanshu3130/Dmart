@@ -8,19 +8,19 @@ const app = express();
 const path = require('path')
 
 
-app.get("/", (req, res) => {
-	return res.json({
-		success:true,
-		message:'Your server is up and running....'
-	});
-});
+// app.get("/", (req, res) => {
+// 	return res.json({
+// 		success:true,
+// 		message:'Your server is up and running....'
+// 	});
+// });
 
 app.use(
 	cors({
 		origin:"http://localhost:3000",
 		credentials:true,
 		
-		allowedHeaders: ['Authorization', 'Content-Type'],
+		
      methods: ['GET', 'POST', 'PUT', 'DELETE'],
 	})
 )
@@ -31,15 +31,15 @@ checkAndUpdateProduct();
 
 app.use("/api/v1/scrapeData" , scrapeRouter)
 
-const frontendPath = path.join(__dirname, 'front-end/build');
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(frontendPath));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(frontendPath, 'index.html'));
-  });
+if(process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.join(__dirname, '../frontend/build')));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'));	
+	});	
 }
-const PORT = process.env.NODE_ENV=== "production"? process.env.PORT : 4000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server is running on port ${PORT}`);
-});
+
+
+
+app.listen(4000,()=> {
+	console.log(`App is running at ${4000}`)
+})
