@@ -2,9 +2,13 @@ import { apiConnector } from "./apiConnector";
 import { setProduct } from "../slices/productSlice";
 import {toast} from "react-hot-toast";
 
-// const BASE_URL =process.env === "development"? process.env.REACT_APP_URL: "/api/v1";
-const BASE_URL = process.env.REACT_APP_URL
+const BASE_URL =
+process.env.NODE_ENV === "development"
+  ? process.env.REACT_APP_URL
+  : "/api/v1";
+//const BASE_URL = process.env.REACT_APP_URL
 console.log(BASE_URL)
+console.log(process.env.MODE)
 
 const GET_ALL_PRODUCTS = BASE_URL + "/scrapeData/getAllProduct"
 const GET_PRODUCTDETAILS = BASE_URL + "/scrapeData/getProductDetails"
