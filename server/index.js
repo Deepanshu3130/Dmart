@@ -31,13 +31,14 @@ checkAndUpdateProduct();
 
 app.use("/api/v1/scrapeData" , scrapeRouter)
 
-if(process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.resolve(__dirname, '../front-end/build')));
-	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(__dirname, '../front-end', 'build', 'index.html'));	
-	});	
-}
+const frontendPath = path.join(__dirname, 'front-end/build');
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(frontendPath));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+  });
+}
 const PORT = process.env.NODE_ENV=== "production"? process.env.PORT : 4000;
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on port ${PORT}`);
